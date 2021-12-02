@@ -16,7 +16,7 @@ go version # --> 1.17.*
 ```
 
 ```sh
-go run day1/main.go
+go run main.go ./input # input dir assumed to contain `day1/input.txt`, etc.
 ```
 
 Note: inputs included in this repo are just the example inputs, not my personalized ones from AOC.
