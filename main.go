@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/walrusk/aoc2021/day1"
+	"github.com/walrusk/aoc2021/day2"
 )
 
 func main() {
@@ -14,9 +15,13 @@ func main() {
 
 	fmt.Println("\n-- DAY 1, PART 1 --")
 	day1.Part1(input_dir)
-
 	fmt.Println("\n-- DAY 1, PART 2 --")
 	day1.Part2(input_dir)
+
+	fmt.Println("\n-- DAY 2, PART 1 --")
+	day2.Part1(input_dir)
+	fmt.Println("\n-- DAY 2, PART 2 --")
+	day2.Part2(input_dir)
 }
 
 func intro() {
