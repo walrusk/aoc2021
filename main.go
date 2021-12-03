@@ -9,6 +9,7 @@ import (
 
 	"github.com/walrusk/aoc2021/pkg/day1"
 	"github.com/walrusk/aoc2021/pkg/day2"
+	"github.com/walrusk/aoc2021/pkg/day3"
 	"github.com/walrusk/aoc2021/pkg/iterable"
 	"github.com/walrusk/aoc2021/pkg/util"
 )
@@ -34,6 +35,10 @@ func main() {
 	fmt.Printf("\nday 2\npt. 1 answer: %d\n", answer)
 	answer, _ = day2.Part2(day_input(2, dir))
 	fmt.Printf("pt. 2 answer: %d\n", answer)
+
+	// Day 3
+	answer, _ = day3.Part1(day_input(3, dir))
+	fmt.Printf("\nday 3\npt. 1 answer: %d\n", answer)
 }
 
 func intro() {
