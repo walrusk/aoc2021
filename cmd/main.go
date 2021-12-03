@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/walrusk/aoc2021/day1"
-	"github.com/walrusk/aoc2021/day2"
+	"github.com/walrusk/aoc2021/pkg/day1"
+	"github.com/walrusk/aoc2021/pkg/day2"
 )
 
 func main() {
