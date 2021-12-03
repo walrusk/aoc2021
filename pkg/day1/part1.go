@@ -1,32 +1,21 @@
 package day1
 
 import (
-	"bufio"
-	"fmt"
 	"log"
-	"os"
-	"path/filepath"
 	"strconv"
+
+	"github.com/walrusk/aoc2021/pkg/iterable"
 )
 
-func Part1(input_dir string) {
-	pwd, err := os.Getwd()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	f, err := os.Open(filepath.Join(pwd, input_dir, "day1/input.txt"))
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer f.Close()
-
-	scanner := bufio.NewScanner(f)
-	line_count := 0
+func Part1(input iterable.StringIterator) (int, error) {
 	last_i := int(^uint(0) >> 1)
 	increase_count := 0
-	for scanner.Scan() {
-		line := scanner.Text()
+
+	for {
+		line, done := input.Next()
+		if done {
+			break
+		}
 
 		i, err := strconv.Atoi(line)
 		if err != nil {
@@ -38,13 +27,7 @@ func Part1(input_dir string) {
 		}
 
 		last_i = i
-		line_count += 1
 	}
 
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Printf("Scanned %d lines\n", line_count)
-	fmt.Printf("Counted increases: %d\n", increase_count)
+	return increase_count, nil
 }

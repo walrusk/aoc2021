@@ -17,22 +17,23 @@ func main() {
 	if len(os.Args) < 2 {
 		log.Fatal(errors.New("no input provided"))
 	}
-	input_dir := os.Args[1] // input dir assumed to contain `day1/input.txt`, etc.
+
+	var answer int
+	var dir = os.Args[1] // input dir assumed to contain `day1/input.txt`, etc.
 
 	intro()
 
-	fmt.Println("\nday 1, part 1")
-	day1.Part1(input_dir)
+	// Day 1
+	answer, _ = day1.Part1(day_input(1, dir))
+	fmt.Printf("\nday 1\npt. 1 answer: %d\n", answer)
+	answer, _ = day1.Part2(day_input(1, dir))
+	fmt.Printf("pt. 2 answer: %d\n", answer)
 
-	fmt.Println("\nday 1, part 2")
-	day1.Part2(input_dir)
-
-	fmt.Println("\nday 2, part 1")
-	day2.Part1(input_dir)
-
-	fmt.Println("\nday 2, part 2")
-	day2_answer, _ := day2.Part2(day_input(2, input_dir))
-	fmt.Printf("answer: %d\n", day2_answer)
+	// Day 2
+	answer, _ = day2.Part1(day_input(2, dir))
+	fmt.Printf("\nday 2\npt. 1 answer: %d\n", answer)
+	answer, _ = day2.Part2(day_input(2, dir))
+	fmt.Printf("pt. 2 answer: %d\n", answer)
 }
 
 func intro() {
