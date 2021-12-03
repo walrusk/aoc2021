@@ -1,4 +1,4 @@
-package util
+package iterable
 
 import (
 	"bufio"
@@ -6,16 +6,12 @@ import (
 	"os"
 )
 
-type stringIterator interface {
-	Next() (value string, done bool)
-}
-
-type iterableFile struct {
+type IterableFile struct {
 	file    *os.File
 	scanner *bufio.Scanner
 }
 
-func (f *iterableFile) Next() (value string, done bool) {
+func (f *IterableFile) Next() (value string, done bool) {
 	if f.scanner.Scan() {
 		return f.scanner.Text(), false
 	}
@@ -26,10 +22,10 @@ func (f *iterableFile) Next() (value string, done bool) {
 	return "", true
 }
 
-func NewIterableFile(input_path string) *iterableFile {
+func NewIterableFile(input_path string) *IterableFile {
 	file, err := os.Open(input_path)
 	if err != nil {
 		log.Fatal(err)
 	}
-	return &iterableFile{file, bufio.NewScanner(file)}
+	return &IterableFile{file, bufio.NewScanner(file)}
 }
