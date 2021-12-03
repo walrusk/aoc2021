@@ -17,9 +17,14 @@ func Part2(input_dir string) {
 	depth := 0
 	pos_x := 0
 
-	util.FileByLine(input_path, func(line string) {
-		words := strings.Fields(line)
+	it := util.NewIterableFile(input_path)
+	for {
+		line, done := it.Next()
+		if done {
+			break
+		}
 
+		words := strings.Fields(line)
 		i, err := strconv.Atoi(words[1])
 		if err != nil {
 			log.Fatal(err)
@@ -35,12 +40,12 @@ func Part2(input_dir string) {
 			aim -= i
 		}
 
-		if depth < 0 {
+		if depth < 0 { // Submarine can't shoot into the air after surfacing.
 			depth = 0
 		}
 
 		line_count += 1
-	})
+	}
 
 	fmt.Printf("Scanned %d lines\n", line_count)
 	fmt.Printf("Final depth: %d\n", depth)
