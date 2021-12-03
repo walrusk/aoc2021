@@ -30,9 +30,7 @@ func main() {
 	fmt.Println("\nday 2, part 1")
 	day2.Part1(input_dir)
 
-	fmt.Println("\nday 2, part 2")
-	day2_answer, _ := day2.Part2(day_input(2, input_dir))
-	fmt.Printf("answer: %d\n", day2_answer)
+	puzzle_print(1, 2, day2.Part2, input_dir)
 }
 
 func intro() {
@@ -48,7 +46,11 @@ func intro() {
   ` + "`" + `Y8bood8P'    ` + "`" + `Y8bood8P'` + "\n\n")
 }
 
-func day_input(day int, input_dir string) *iterable.IterableFile {
+type PuzzlePart func(input iterable.StringIterator) (int, error)
+
+func puzzle_print(day int, part int, fn PuzzlePart, input_dir string) {
+	fmt.Printf("\nday %d, part %d", day, part)
 	input_path := filepath.Join(util.CurrentDir(), input_dir, fmt.Sprintf("day%d/input.txt", day))
-	return iterable.NewIterableFile(input_path)
+	answer, _ := fn(iterable.NewIterableFile(input_path))
+	fmt.Printf("answer: %d\n", answer)
 }
